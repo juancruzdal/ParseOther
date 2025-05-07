@@ -54,7 +54,6 @@ public class ParseOtherExpansion extends PlaceholderExpansion {
               target = found;
           }
       } catch (IllegalArgumentException e) {
-          // No es UUID, intentar buscar por nombre entre jugadores ya conocidos
           for (OfflinePlayer op : Bukkit.getOfflinePlayers()) {
               if (op.getName() != null && op.getName().equalsIgnoreCase(input)) {
                   target = op;
@@ -62,8 +61,6 @@ public class ParseOtherExpansion extends PlaceholderExpansion {
               }
           }
       }
-
-      // Si no se encontró jugador válido localmente, abortar
       if (target == null || !target.hasPlayedBefore()) {
           return "";
       }
